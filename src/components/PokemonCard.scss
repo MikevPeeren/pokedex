@@ -1,0 +1,26 @@
+.PokemonCard {
+  position: relative;
+  text-align: center;
+  width: 50%;
+
+  &__image {
+    height: 25em;
+    vertical-align: top;
+  }
+
+  &__body {
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 8em;
+    background: rgba(0, 0, 0, 0.54) none repeat scroll 0% 0%;
+    position: absolute;
+
+    &--h3 {
+      padding: 20px;
+      font-size: 24px;
+      color: white;
+      display: block;
+    }
+  }
+}
