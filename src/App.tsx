@@ -19,11 +19,12 @@ import { HEADER_TEXT, LOADING, ERROR } from './constants/general';
 function App() {
   const GET_POKEMON_INFO = gql`
     {
-      pokemons(first: 10) {
+      pokemons(first: 20) {
         id
         number
         name
         image
+        types
         evolutions {
           id
           number
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <div className="PokemonOverview">
-      <h1 className="PokemonOverview__header">{HEADER_TEXT}</h1>
+      {/* <h1 className="PokemonOverview__header">{HEADER_TEXT}</h1> */}
       <div className="PokemonOverview__pokemons">
         {loading && <p>{LOADING}</p>}
         {error && <p>{ERROR}</p>}

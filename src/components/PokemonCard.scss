@@ -4,7 +4,7 @@
   width: 50%;
 
   &__image {
-    height: 25em;
+    height: 18em;
     vertical-align: top;
   }
 
@@ -12,13 +12,27 @@
     left: 0px;
     right: 0px;
     bottom: 0px;
-    height: 8em;
-    background: rgba(0, 0, 0, 0.54) none repeat scroll 0% 0%;
+    height: 6em;
+    background: rgba(0, 0, 0, 0.4) none repeat scroll 0% 0%;
     position: absolute;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 
-    &--h3 {
-      padding: 20px;
-      font-size: 24px;
+    &--content {
+      padding: 1.5em;
+      position: relative;
+      text-align: left;
+    }
+
+    &--pokemonName {
+      font-size: 2em;
+      color: white;
+      display: block;
+    }
+
+    &--pokemonType {
+      font-size: 1.5em;
       color: white;
       display: block;
     }

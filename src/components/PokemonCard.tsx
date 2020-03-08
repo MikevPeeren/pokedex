@@ -6,14 +6,18 @@ import './PokemonCard.scss';
 
 interface PokemonCardProps {
   pokemon: {
+    number: string;
     name: string;
     image: string;
+    types: [];
   };
   index: string;
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = props => {
   const { index, pokemon } = props;
+
+  console.log(pokemon);
 
   return (
     <div key={index} className="PokemonCard">
@@ -23,7 +27,14 @@ const PokemonCard: React.FC<PokemonCardProps> = props => {
         src={pokemon.image}
       />
       <div className="PokemonCard__body">
-        <h3 className="PokemonCard__body--h3">{pokemon.name}</h3>
+        <div className="PokemonCard__body--content">
+          <span className="PokemonCard__body--pokemonName">
+            {pokemon.number} - {pokemon.name}
+          </span>
+          <span className="PokemonCard__body--pokemonType">
+            {pokemon.types.join(', ')}
+          </span>
+        </div>
       </div>
     </div>
   );
