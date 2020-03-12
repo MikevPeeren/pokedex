@@ -12,9 +12,10 @@ import './App.scss';
 
 // Components
 import PokemonCard from './components/PokemonCard';
+import SearchForm from './components/SearchForm';
 
-// CONSTANTS
-import { HEADER_TEXT, LOADING, ERROR } from './constants/general';
+// Constants
+import { LOADING, ERROR } from './constants/general';
 
 function App() {
   const GET_POKEMON_INFO = gql`
@@ -39,7 +40,10 @@ function App() {
 
   return (
     <div className="PokemonOverview">
-      {/* <h1 className="PokemonOverview__header">{HEADER_TEXT}</h1> */}
+      <div className="PokemonOverview__searchform">
+        <SearchForm />
+      </div>
+
       <div className="PokemonOverview__pokemons">
         {loading && <p>{LOADING}</p>}
         {error && <p>{ERROR}</p>}

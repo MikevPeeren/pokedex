@@ -4,6 +4,21 @@
     margin: 50px;
   }
 
+  &__searchform {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 50%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 10px,
+      rgba(0, 0, 0, 0.23) 0px 3px 10px;
+  }
+
   &__pokemons {
     height: 100%;
     width: 50%;
