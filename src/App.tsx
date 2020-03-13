@@ -1,11 +1,11 @@
 // React
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Apollo
 import { useQuery } from '@apollo/react-hooks';
 
-// GraphQL
-import gql from 'graphql-tag';
+// Api
+import { getPokemonGQLByAmount } from './api/PokemonApi';
 
 // CSS
 import './App.scss';
@@ -18,25 +18,51 @@ import SearchForm from './components/SearchForm';
 import { LOADING, ERROR } from './constants/general';
 
 function App() {
-  const GET_POKEMON_INFO = gql`
-    {
-      pokemons(first: 20) {
-        id
-        number
-        name
-        image
-        types
-        evolutions {
-          id
-          number
-          name
-          image
-        }
-      }
-    }
-  `;
+  const [pokemonSearchCount, setPokemonSearchCount] = useState(20);
+
+  const GET_POKEMON_INFO = getPokemonGQLByAmount(pokemonSearchCount);
 
   const { data, loading, error } = useQuery(GET_POKEMON_INFO);
+
+  console.log(loading);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return function cleanup() {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
+
+  /**
+   * This function will make a new API call when the bottom of the page is reached
+   *
+   * @param {void}
+   *
+   * @returns {void}
+   */
+  const handleScroll = () => {
+    const windowHeight =
+      'innerHeight' in window
+        ? window.innerHeight
+        : document.documentElement.offsetHeight;
+
+    const body = document.body;
+    const html = document.documentElement;
+
+    const docHeight = Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight,
+    );
+    const windowBottom = windowHeight + window.pageYOffset;
+
+    if (windowBottom >= docHeight) {
+      setPokemonSearchCount(pokemonSearchCount + 20);
+    }
+  };
 
   return (
     <div className="PokemonOverview">
@@ -44,14 +70,23 @@ function App() {
         <SearchForm />
       </div>
 
+      {(loading || error) && (
+        <div className="PokemonOverview__apiStatus">
+          {loading && <p>{LOADING}</p>}
+          {error && <p>{ERROR}</p>}
+        </div>
+      )}
+
       <div className="PokemonOverview__pokemons">
-        {loading && <p>{LOADING}</p>}
-        {error && <p>{ERROR}</p>}
         {data &&
           data.pokemons &&
           // @ts-ignore
           data.pokemons.map((pokemon, index) => (
-            <PokemonCard index={index} pokemon={pokemon}></PokemonCard>
+            <PokemonCard
+              key={Math.random()}
+              index={index}
+              pokemon={pokemon}
+            ></PokemonCard>
           ))}
       </div>
     </div>

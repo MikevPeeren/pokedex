@@ -17,8 +17,6 @@ interface PokemonCardProps {
 const PokemonCard: React.FC<PokemonCardProps> = props => {
   const { index, pokemon } = props;
 
-  console.log(pokemon);
-
   return (
     <div key={index} className="PokemonCard">
       <img

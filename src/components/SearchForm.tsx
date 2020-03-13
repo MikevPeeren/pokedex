@@ -15,11 +15,11 @@ const SearchForm: React.FC = () => {
   return (
     <div className="SearchForm">
       <Form>
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group controlId="searchPokemonForm">
           <Form.Label>{SEARCH_LABEL}</Form.Label>
-          <Form.Control type="email" placeholder={ENTER_POKEMON} />
+          <Form.Control type="text" placeholder={ENTER_POKEMON} />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={() => {}}>
           {SEARCH}
         </Button>
       </Form>
