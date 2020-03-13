@@ -7,6 +7,9 @@ import { useQuery } from '@apollo/react-hooks';
 // Api
 import { getPokemonGQLByAmount, getPokemonGQLByName } from './api/PokemonApi';
 
+// External
+import classnames from 'classnames';
+
 // CSS
 import './App.scss';
 
@@ -16,7 +19,6 @@ import SearchForm from './components/SearchForm';
 
 // Constants
 import { LOADING, ERROR } from './constants/general';
-
 const App: React.FC = () => {
   const [pokemonSearchCount, setPokemonSearchCount] = useState(10);
   const [pokemonName, setPokemonName] = useState('');
@@ -28,6 +30,13 @@ const App: React.FC = () => {
   else GET_POKEMON_INFO = getPokemonGQLByAmount(pokemonSearchCount);
 
   const { data, loading, error } = useQuery(GET_POKEMON_INFO);
+
+  const apiStatusClassNames = classnames('PokemonOverview__apiStatus', {
+    'PokemonOverview__apiStatus--error':
+      error || (data && data.pokemon === null),
+  });
+
+  console.log(apiStatusClassNames);
 
   useEffect(() => {
     /**
@@ -88,10 +97,13 @@ const App: React.FC = () => {
         <SearchForm searchPokemonByName={searchPokemonByName} />
       </div>
 
-      {(loading || error) && (
-        <div className="PokemonOverview__apiStatus">
+      {(loading || error || (data && data.pokemon === null)) && (
+        <div className={apiStatusClassNames}>
           {loading && <p>{LOADING}</p>}
-          {error && <p>{ERROR}</p>}
+          {error ||
+            (data && data.pokemon === null && (
+              <p className="PokemonOverview__apiStatus--paragraph">{ERROR}</p>
+            ))}
         </div>
       )}
 
