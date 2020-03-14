@@ -1,6 +1,7 @@
 {
   "name": "pokemon-finder",
   "version": "1.0.0",
+  "license": "MIT",
   "homepage": "http://mikevpeeren.github.io/Pokedex",
   "dependencies": {
     "@testing-library/jest-dom": "^5.1.1",
