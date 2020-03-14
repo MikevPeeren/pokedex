@@ -36,8 +36,6 @@ const App: React.FC = () => {
       error || (data && data.pokemon === null),
   });
 
-  console.log(apiStatusClassNames);
-
   useEffect(() => {
     /**
      * This function will make a new API call when the bottom of the page is reached
