@@ -15,7 +15,7 @@
     "@types/react-dom": "^16.9.6",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
-    "apollo-link-http": "^1.5.16",
+    "apollo-link-http": "^1.5.17",
     "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
     "graphql": "^14.6.0",
