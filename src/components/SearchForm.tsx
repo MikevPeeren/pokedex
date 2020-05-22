@@ -20,15 +20,29 @@ const SearchForm: React.FC<SearchFormProps> = props => {
 
   const pokemonInput = useRef(null);
 
+  const ifEnterPressed = (event: any) => {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      searchPokemonByName(pokemonInput);
+    }
+  };
+
   return (
     <div className="SearchForm">
-      <Form>
+      <Form
+        onSubmit={(event: any) => {
+          ifEnterPressed(event);
+        }}
+      >
         <Form.Group controlId="searchPokemonForm">
           <Form.Label>{SEARCH_LABEL}</Form.Label>
           <Form.Control
             ref={pokemonInput}
             type="text"
             placeholder={ENTER_POKEMON}
+            onKeyDown={(event: any) => {
+              ifEnterPressed(event);
+            }}
           />
         </Form.Group>
         <Button
