@@ -19,7 +19,7 @@
     "bootstrap": "^4.5.0",
     "classnames": "^2.2.6",
     "graphql": "^14.7.0",
-    "graphql-tag": "^2.10.3",
+    "graphql-tag": "^2.10.4",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-apollo": "^3.1.5",
