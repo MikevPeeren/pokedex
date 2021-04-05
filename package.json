@@ -17,7 +17,7 @@
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
     "bootstrap": "^4.6.0",
-    "classnames": "^2.3.0",
+    "classnames": "^2.3.1",
     "graphql": "^14.7.0",
     "graphql-tag": "^2.11.0",
     "node-sass": "^5.0.0",
