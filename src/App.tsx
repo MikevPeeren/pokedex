@@ -98,10 +98,9 @@ const App: React.FC = () => {
       {(loading || error || (data && data.pokemon === null)) && (
         <div className={apiStatusClassNames}>
           {loading && <p>{LOADING}</p>}
-          {error ||
-            (data && data.pokemon === null && (
-              <p className="PokemonOverview__apiStatus--paragraph">{ERROR}</p>
-            ))}
+          {(error || (data && data.pokemon === null)) && (
+            <p className="PokemonOverview__apiStatus--paragraph">{ERROR}</p>
+          )}
         </div>
       )}
 
